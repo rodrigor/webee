@@ -1,17 +1,19 @@
 package exemplo;
 
-import org.ayty.webee.*
+import org.ayty.webee.*;
 
-public class Login extends Acao{
-	
+public class AloMundo extends Acao {
+
 	protected void configurar(){
-		this.setMetodo(Metodo.GET);
-		this.exigeLogin(false);
+		this.setMetodoHttp(MetodoHttp.GET);
+		this.exigeLogin(true);
 	}
-	
-	protected void executar(Requisicao requisicao, Resposta resposta){
-		String nome = requisicao.getParametro("nome");
-		resposta.println("Alo "+nome+"!");
+
+	protected void executar(Requisicao req, Resposta resp){
+		String nome = req.getParametro("nome");
+		resp.setTituloResposta("Alo Mundo!");
+		resp.println("Alo "+nome+"!");
 	}
+
 
 }
